@@ -1,0 +1,8 @@
+<google-map height="100%"
+            width="100%"
+            [center]="center"
+            [zoom]="zoom">
+  <map-polygon #mapPolygon *ngFor="let polygon of polygons"
+  [paths]="polygon"></map-polygon>
+  <map-info-window>Info Window content</map-info-window>
+</google-map>
