@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Footer() {
+function List() {
   return (
     <div>List Component</div>
   )
 }
 
-export default Footer;
+export default List;
