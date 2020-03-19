@@ -8,13 +8,19 @@ import { HttpService } from 'src/app/http.service';
 })
 export class CheckButtonComponent implements OnInit {
 
-  constructor(private _http: HttpService) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit(): void {
   }
-
+ 
   onClick() {
-
+    this.http.getIsCloseToDangerZone().subscribe(res => {
+      if (res) {
+        alert('Danger');
+      } else {
+        alert('Not in Danger');
+      }
+    });
   }
 
 }
