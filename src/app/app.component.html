@@ -1,15 +1,7 @@
 <google-map height="100%"
             width="100%"
             [center]="center"
-            [zoom]="zoom"
-            (mapClick)="addMarker($event)"
-            (mapMousemove)="move($event)"
-            (mapRightclick)="removeLastMarker()">
-  <map-marker #marker
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-              (mapClick)="openInfoWindow(marker)"></map-marker>
+            [zoom]="zoom">
   <map-polygon #mapPolygon *ngFor="let polygon of polygons"
   [paths]="polygon"></map-polygon>
   <map-info-window>Info Window content</map-info-window>

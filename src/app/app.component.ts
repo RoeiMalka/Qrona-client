@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, NgZone, AfterViewInit} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {MapInfoWindow, MapMarker, GoogleMap, MapPolygon} from '@angular/google-maps';
 
 @Component({
@@ -6,13 +6,13 @@ import {MapInfoWindow, MapMarker, GoogleMap, MapPolygon} from '@angular/google-m
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
   @ViewChild(MapMarker, { static: false}) marker: MapMarker;
   @ViewChild(MapPolygon, { static: false}) mapPolygon: MapPolygon;
   @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
 
-  constructor(private _ngZone: NgZone) {}
+  constructor() {}
 
   center = {lat: 24, lng: 12};
   markerOptions = {draggable: false};
@@ -35,27 +35,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       new google.maps.LatLng({lat: 5, lng: 5}),
       new google.maps.LatLng({lat: 4, lng: 7})]);
 
-      this.polygons.push([new google.maps.LatLng({lat: 35, lng: 10}), 
-        new google.maps.LatLng({lat: 25, lng: 5}),
-        new google.maps.LatLng({lat: 20, lng: 7})]);
-  }
-
-  ngAfterViewInit() {
-  }
-
-  addMarker(event: google.maps.MouseEvent) {
-    this.markerPositions.push(event.latLng.toJSON());
-  }
-
-  move(event: google.maps.MouseEvent) {
-    this.display = event.latLng.toJSON();
-  }
-
-  openInfoWindow(marker: MapMarker) {
-    this.infoWindow.open(marker);
-  }
-
-  removeLastMarker() {
-    this.markerPositions.pop();
+    this.polygons.push([new google.maps.LatLng({lat: 35, lng: 10}), 
+      new google.maps.LatLng({lat: 25, lng: 5}),
+      new google.maps.LatLng({lat: 20, lng: 7})]);
   }
 }
