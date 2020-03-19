@@ -1,5 +1,6 @@
 import {Component, ViewChild, OnInit} from '@angular/core';
 import {MapInfoWindow, MapMarker, GoogleMap, MapPolygon} from '@angular/google-maps';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -12,31 +13,17 @@ export class AppComponent implements OnInit {
   @ViewChild(MapPolygon, { static: false}) mapPolygon: MapPolygon;
   @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
 
-  constructor() {}
+  constructor(private http: HttpService) {}
 
-  center = {lat: 24, lng: 12};
+  center = {lat: 31.5, lng: 35};
   markerOptions = {draggable: false};
   polygonOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
-  zoom = 17;
+  zoom = 7.7;
   display?: google.maps.LatLngLiteral;
   polygons = [];
   
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log(position);
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }
-    });
-
-    this.polygons.push([new google.maps.LatLng({lat: 10, lng: 10}), 
-      new google.maps.LatLng({lat: 5, lng: 5}),
-      new google.maps.LatLng({lat: 4, lng: 7})]);
-
-    this.polygons.push([new google.maps.LatLng({lat: 35, lng: 10}), 
-      new google.maps.LatLng({lat: 25, lng: 5}),
-      new google.maps.LatLng({lat: 20, lng: 7})]);
+    this.http.getAllPolygons().subscribe(polys => this.polygons.push(polys));
   }
 }
