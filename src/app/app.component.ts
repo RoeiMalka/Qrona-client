@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
       options: { animation: google.maps.Animation.BOUNCE },
     })
 
-    this.http.getAllPolygons().subscribe(polys => this.polygons.push(polys));
+    this.http.getAllPolygons().subscribe(polys => {
+      polys.forEach(poly => this.polygons.push(poly));
+    });
   }
 }
