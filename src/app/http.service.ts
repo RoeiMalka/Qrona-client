@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http';
+import { PolygonsModel } from './models/polygon-model copy';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getAllPolygons() {
-    return this.http.get<Object[]>('http://localhost:5000/coordinates/polygons');
+    return this.http.get<PolygonsModel[]>('http://localhost:5000/coordinates/polygons');
   }
 
   getIsCloseToDangerZone() {
