@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,8 @@ export class HttpService {
   }
 
   getIsCloseToDangerZone() {
-    let lat = 0; 
-    let lng = 0;
+    let lat = 1; 
+    let lng = 1;
     navigator.geolocation.getCurrentPosition(position => {
       lat = position.coords.latitude;
       lng = position.coords.longitude;
