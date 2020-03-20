@@ -1,10 +1,12 @@
 <app-check-button style="position: absolute; z-index: 2; top: 67%; right: 8px"></app-check-button>
+<app-logo></app-logo>
 <google-map height="100%"
             width="100%"
             [center]="center"
             [zoom]="zoom">
   <map-polygon #mapPolygon *ngFor="let polygon of polygons"
-  [paths]="polygon"></map-polygon>
+  [paths]="polygon"
+  [options]="polygonOptions"></map-polygon>
   <map-marker #marker *ngFor='let marker of markers'
   [position]="marker.position"
     [label]="marker.label"

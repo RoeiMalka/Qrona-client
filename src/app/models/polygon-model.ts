@@ -1,4 +1,5 @@
-export interface PolygonModel {
-    lat: number;
-    lng: number;
+import { Point } from './point-model';
+
+export interface Polygon {
+    points: Point[];
 }

@@ -12,12 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckButtonComponent,
     SearchBarComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
