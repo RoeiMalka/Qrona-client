@@ -15,15 +15,29 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpService) {}
 
-  center = {lat: 31.5, lng: 35};
+  center = {lat: 31.9695729, lng: 34.844304};
   markerOptions = {draggable: false};
   polygonOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
-  zoom = 7.7;
+  zoom = 16;
   display?: google.maps.LatLngLiteral;
   polygons = [];
+  markers = [];
   
   ngOnInit() {
+    // navigator.geolocation.getCurrentPosition(position => {
+    //   this.center.lat = position.coords.latitude;
+    //   this.center.lng = position.coords.longitude;
+    //   this.markers.push({lat: position.coords.latitude, lng: position.coords.longitude});
+    // });
+    this.markers.push({
+      position: {
+        lat: this.center.lat,
+        lng: this.center.lng
+      },
+      options: { animation: google.maps.Animation.BOUNCE },
+    })
+
     this.http.getAllPolygons().subscribe(polys => this.polygons.push(polys));
   }
 }

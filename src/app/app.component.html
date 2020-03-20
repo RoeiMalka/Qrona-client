@@ -5,5 +5,11 @@
             [zoom]="zoom">
   <map-polygon #mapPolygon *ngFor="let polygon of polygons"
   [paths]="polygon"></map-polygon>
+  <map-marker #marker *ngFor='let marker of markers'
+  [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options">
+  </map-marker>
   <map-info-window>Info Window content</map-info-window>
 </google-map>
